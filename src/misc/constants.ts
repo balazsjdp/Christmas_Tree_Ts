@@ -6,5 +6,6 @@ export const Constants = {
     CANVAS_WIDTH : 800,
     CANVAS_HEIGHT : 600,
     SNOW_DENSITY: 500,
-    RENDER_SPEED: 300
+    BRANCH_DISTANCE: 30,
+    FPS: 60
 }

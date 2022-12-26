@@ -39,7 +39,6 @@ export class Decoration {
         this.color = Constants.DECORATION_COLORS[Constants.RANDOM_INT_BETWEEN(0,Constants.DECORATION_COLORS.length)];
     }
 
-
     blink()
     {
         setInterval(() => {

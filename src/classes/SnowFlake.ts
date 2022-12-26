@@ -41,9 +41,9 @@ export class SnowFlake{
     }
 
     
-
     advanceFalling()
     {
+        // If the snowflake reaches the bottom, put it back to the top
         if(this.position.y >= Constants.CANVAS_HEIGHT){
             this.setPosition(this.position.x + this.velX, 0 + this.velY);
         }

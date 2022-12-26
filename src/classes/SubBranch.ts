@@ -8,8 +8,7 @@ export class SubBranch extends Branch{
     override calcPoints(invert : boolean)
     {
         let inverter : number = invert == true ? -1 : 1;
-
-         let start : Interfaces.Point = {
+        let start : Interfaces.Point = {
             x: this.origin.start.x + (this.index * inverter) + (this.r * this.index * inverter), 
             y: this.index + this.origin.start.y + this.r * this.index
         }

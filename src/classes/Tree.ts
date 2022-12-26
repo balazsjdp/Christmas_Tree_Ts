@@ -12,7 +12,6 @@ export class Tree
     trunk : Trunk;
     branches: Branch[] = [];
 
-
     constructor(canvas : HTMLCanvasElement)
     {
         this._canvas = canvas;
@@ -40,11 +39,11 @@ export class Tree
         this.trunk.setPoints(start,end);
 
 
-
         // Draw branches
-        let mainBranchesCount : number = 16;
-        let branchDistance : number = 30;
+        let mainBranchesCount : number = Constants.CANVAS_HEIGHT / 40;
+        let branchDistance : number = Constants.BRANCH_DISTANCE;
 
+        // Draw main branches from trunk
         for(let i = 0; i < mainBranchesCount; i++)
         {
             let branchR : Branch = new Branch(this._canvas, this.trunk, i * branchDistance);
@@ -64,7 +63,7 @@ export class Tree
             this.branches.push(branchL);
         }
 
-
+        // Draw small branches from main branches
         this.branches.forEach((mainBranch,index) => {
             let subBranchesCount = index / 4;
 
