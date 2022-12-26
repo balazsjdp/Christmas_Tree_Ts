@@ -1,15 +1,5 @@
-# 🚀 Welcome to your new awesome project!
+# 🎁 Merry Christmas Team!
 
-This project has been created using **webpack-cli**, you can now run
+Clone the project and check the index.html file in the dist directory!
 
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+And of course check the code if you're interested.
