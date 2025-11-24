@@ -29,7 +29,10 @@ export class SubBranch extends Branch{
         this.decoration.setColor();
         this.decoration.radius = 3;
         this.decoration.draw();
-        this.decoration.blink();
+    }
+
+    getDecoration() : Decoration {
+        return this.decoration;
     }
 
 

@@ -8,6 +8,7 @@ export class Decoration {
     ctx : any;
     color: string;
     radius: number;
+    isLit: boolean = true;
 
     constructor(canvas : HTMLCanvasElement)
     {
@@ -26,28 +27,23 @@ export class Decoration {
 
     draw()
     {
-        this.ctx.fillStyle = this.color;
-        this.ctx.strokeStyle = this.color;
-        this.ctx.beginPath();
-        this.ctx.ellipse(this.position.x, this.position.y, this.radius, this.radius, Math.PI, 0, 5 * Math.PI);
-        this.ctx.stroke();
-        this.ctx.fill();
+        if(this.isLit){
+            this.ctx.fillStyle = this.color;
+            this.ctx.strokeStyle = this.color;
+            this.ctx.beginPath();
+            this.ctx.ellipse(this.position.x, this.position.y, this.radius, this.radius, Math.PI, 0, 5 * Math.PI);
+            this.ctx.stroke();
+            this.ctx.fill();
+        }
+    }
+
+    toggle()
+    {
+        this.isLit = !this.isLit;
     }
 
     setColor()
     {
-        this.color = Constants.DECORATION_COLORS[Constants.RANDOM_INT_BETWEEN(0,Constants.DECORATION_COLORS.length)];
+        this.color = Constants.DECORATION_COLORS[Constants.RANDOM_INT_BETWEEN(0,Constants.DECORATION_COLORS.length - 1)];
     }
-
-    blink()
-    {
-        setInterval(() => {
-            this.ctx.fillStyle = this.color;
-            this.ctx.strokeStyle = this.color;
-            this.setColor();
-        },500)
-    }
-
-
-
 }

@@ -1,7 +1,9 @@
 import { Constants } from "../misc/constants";
 import {Trunk} from './Trunk';
 import {Branch} from './Branch'
-import {SubBranch} from './SubBranch'
+import { SubBranch } from './SubBranch'
+import { Decoration } from './Decoration'
+import { Decoration } from "./Decoration";
 
 
 export class Tree
@@ -11,6 +13,7 @@ export class Tree
 
     trunk : Trunk;
     branches: Branch[] = [];
+    star: Decoration;
 
     constructor(canvas : HTMLCanvasElement)
     {
@@ -37,6 +40,12 @@ export class Tree
         this.trunk = new Trunk(this._canvas);
         this.trunk.setColor("#362500");
         this.trunk.setPoints(start,end);
+
+        // Create star
+        this.star = new Decoration(this._canvas);
+        this.star.setPosition(start.x, start.y);
+        this.star.setColor("#FFD700");
+        this.star.radius = 10;
 
 
         // Draw branches
@@ -117,5 +126,17 @@ export class Tree
         this.branches.forEach(b => {
             b.draw();
         });
+        this.star.draw();
+    }
+
+    getDecorations(): Decoration[] {
+        const decorations: Decoration[] = [];
+        this.branches.forEach(b => {
+            if (b instanceof SubBranch) {
+                decorations.push((b as SubBranch).getDecoration());
+            }
+        });
+        decorations.push(this.star);
+        return decorations;
     }
 }
