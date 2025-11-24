@@ -3,7 +3,6 @@ import {Trunk} from './Trunk';
 import {Branch} from './Branch'
 import { SubBranch } from './SubBranch'
 import { Decoration } from './Decoration'
-import { Decoration } from "./Decoration";
 
 
 export class Tree
@@ -44,7 +43,7 @@ export class Tree
         // Create star
         this.star = new Decoration(this._canvas);
         this.star.setPosition(start.x, start.y);
-        this.star.setColor("#FFD700");
+        this.star.setColor();
         this.star.radius = 10;
 
 
