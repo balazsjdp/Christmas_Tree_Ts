@@ -22,8 +22,29 @@ let _canvas : HTMLCanvasElement = <HTMLCanvasElement> canvasEl;
 const tree : Tree = new Tree(_canvas);
 tree.init();
 let _ctx : any = _canvas.getContext("2d");
+const decorations = tree.getDecorations();
+let blinkCounter = 0;
 
 const snow : SnowFlake[] = [];
+const gifts: Gift[] = [];
+
+const gift1 = new Gift(_canvas);
+gift1.setPosition(350, 550);
+gift1.size = 30;
+gift1.color = "#FF0000";
+gifts.push(gift1);
+
+const gift2 = new Gift(_canvas);
+gift2.setPosition(400, 540);
+gift2.size = 40;
+gift2.color = "#0000FF";
+gifts.push(gift2);
+
+const gift3 = new Gift(_canvas);
+gift3.setPosition(450, 560);
+gift3.size = 20;
+gift3.color = "#00FF00";
+gifts.push(gift3);
 
 setInterval(() => {
     requestAnimationFrame(render);
@@ -36,10 +57,30 @@ function render()
     _ctx.fillRect(0, 0, Constants.CANVAS_WIDTH, Constants.CANVAS_HEIGHT);
     tree.draw();
 
+    gifts.forEach(gift => {
+        gift.draw();
+    });
+
     snow.forEach(snowFlake => {
         snowFlake.advanceFalling();
         snowFlake.draw();
     });
+
+    blinkCounter++;
+    if (blinkCounter % 15 === 0) {
+        decorations.forEach((d, i) => {
+            if (i % 2 === 0) {
+                d.toggle();
+            }
+        });
+    }
+    if (blinkCounter % 30 === 0) {
+        decorations.forEach((d, i) => {
+            if (i % 2 !== 0) {
+                d.toggle();
+            }
+        });
+    }
 }
 
 
