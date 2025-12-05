@@ -1,29 +1,18 @@
 /// <reference path="../interfaces/Point.ts" />
 
 export class Gift{
-    _canvas : HTMLCanvasElement;
-    ctx : any;
     color: string;
     position : Interfaces.Point;
     size : number;
 
 
-    constructor(canvas : HTMLCanvasElement)
+    constructor(giftConfig?: Partial<Gift>)
     {
-        this._canvas = canvas;
-        this.ctx = this._canvas.getContext("2d");
-    }
-
-
-    draw()
-    {
-        this.ctx.fillStyle = this.color;
-        this.ctx.strokeStyle = this.color;
-
-        this.ctx.beginPath();
-        this.ctx.rect(this.position.x, this.position.y, this.size, this.size);
-        this.ctx.stroke();
-        this.ctx.fill();
+        if(giftConfig){
+            this.color = giftConfig.color;
+            this.position = {x: giftConfig.position.x, y: giftConfig.position.y}
+            this.size = giftConfig.size;
+        }
     }
 
     setPosition(x: number, y: number){

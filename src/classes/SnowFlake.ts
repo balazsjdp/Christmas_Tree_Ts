@@ -5,22 +5,16 @@ import { Constants } from "../misc/constants";
 export class SnowFlake{
 
     position : Interfaces.Point;
-    _canvas : HTMLCanvasElement;
-    ctx : any;
     color: string;
     radius: number;
 
     velX : number;
     velY : number;
 
-
-    constructor(canvas : HTMLCanvasElement)
+    constructor()
     {
-        this._canvas = canvas;
-        this.ctx = this._canvas.getContext("2d");
         this.color = "#f2f1f0";
-        this.velY = 1;
-        this.velX = 1;
+        this.reset();
     }
 
     setPosition(x: number, y: number){
@@ -30,41 +24,25 @@ export class SnowFlake{
         }
     }
 
-    draw()
-    {
-        this.ctx.fillStyle = this.color;
-        this.ctx.strokeStyle = this.color;
-        this.ctx.beginPath();
-        this.ctx.ellipse(this.position.x, this.position.y, this.radius, this.radius, Math.PI, 0, 5 * Math.PI);
-        this.ctx.stroke();
-        this.ctx.fill();
+    reset() {
+        this.position = {
+            x: Constants.RANDOM_INT_BETWEEN(0, Constants.CANVAS_WIDTH),
+            y: Constants.RANDOM_INT_BETWEEN(0, -Constants.CANVAS_HEIGHT)
+        }
+        this.velY = Constants.RANDOM_INT_BETWEEN(2, 5);
+        this.velX = Constants.RANDOM_INT_BETWEEN(-1, 1);
+        this.radius = Constants.RANDOM_INT_BETWEEN(1, 3);
     }
 
-    
     advanceFalling()
     {
-        // If the snowflake reaches the bottom, put it back to the top
-        if(this.position.y >= Constants.CANVAS_HEIGHT){
-            this.setPosition(this.position.x + this.velX, 0 + this.velY);
-        }
+        this.position.y += this.velY;
+        this.position.x += this.velX;
 
-        if(this.position.x <= 0){
-            this.velX++
+        // If the snowflake reaches the bottom or drifts off screen, reset it
+        if (this.position.y > Constants.CANVAS_HEIGHT + this.radius || this.position.x < -this.radius || this.position.x > Constants.CANVAS_WIDTH + this.radius) {
+            this.reset();
+            this.position.y = -this.radius; // ensure it starts just above the screen
         }
-        else if(this.position.x >= Constants.CANVAS_WIDTH)
-        {
-            this.velX--;
-        }
-
-        this.setPosition(this.position.x + this.velX, this.position.y + this.velY);
-        this.changePosition()
     }
-
-
-    changePosition()
-    {
-        this.velX = Constants.RANDOM_INT_BETWEEN(-2,2)
-        this.velY = Constants.RANDOM_INT_BETWEEN(1,4)
-    }
-
 }
