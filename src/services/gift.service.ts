@@ -1,7 +1,7 @@
 import {Gift} from "../classes/Gift";
 import { Service } from "../interfaces/Service";
 import { HasCanvas } from "../classes/HasCanvas";
-const giftConfig = require('/config.json').gifts;
+const giftConfig = require('../../config.json').gifts;
 
 export class GiftService extends HasCanvas implements Service {
     gifts: Gift[] = [];
