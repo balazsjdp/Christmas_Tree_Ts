@@ -1,0 +1,17 @@
+{
+    "gifts": [
+        { "position": { "x": 330, "y": 560 }, "size": 40, "color": "#c42a2a" },
+        { "position": { "x": 375, "y": 550 }, "size": 50, "color": "#2a75c4" },
+        { "position": { "x": 430, "y": 560 }, "size": 40, "color": "#2ac44e" },
+        { "position": { "x": 410, "y": 527 }, "size": 30, "color": "#e0d941" },
+        { "position": { "x": 350, "y": 517 }, "size": 40, "color": "#c42ac4" },
+        { "position": { "x": 290, "y": 565 }, "size": 35, "color": "#34a853" },
+        { "position": { "x": 360, "y": 490 }, "size": 25, "color": "#fbbc05" },
+        { "position": { "x": 475, "y": 560 }, "size": 40, "color": "#4285f4" },
+        { "position": { "x": 450, "y": 527 }, "size": 30, "color": "#ea4335" },
+        { "position": { "x": 415, "y": 505 }, "size": 20, "color": "#9b59b6" }
+    ],
+    "snow": {
+        "density": 300
+    }
+}
