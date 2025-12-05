@@ -43,4 +43,4 @@ And of course check the code if you're interested.
   <a href="https://www.linkedin.com/in/bal%C3%A1zs-horv%C3%A1th-22b83a175/" target="blank">
     <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="your-linkedin-profile" height="30" width="40" />
   </a>
-p>
+</p>
